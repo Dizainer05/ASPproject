@@ -1,0 +1,47 @@
+﻿@page
+@model WebApplication1.Pages.AddFacultativModel
+@{
+    ViewData["Title"] = "Таблица c Факультативами";
+}
+<head>
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<h1>Факультативы</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Название факультатива</th>
+            <th>Часы факультатива</th>
+            <th>Тип факультатива</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Facultative empl in Model.facultatives)
+        {
+            <tr>
+                <td>@empl.Title</td>
+                <td>@empl.Hours</td>
+                <td>@empl.Type</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<form method="post">
+    <div class="form-group">
+
+        <label for="NameFacult" class="labeltest">Название факультатива:</label>
+        <input type="text" id="NameFacult" name="NameFacult" class="form-control" required>
+
+        <label for="Hours" class="labeltest">Количество часов в факультативе:</label>
+        <input type="text" id="Hours" name="Hours" class="form-control" required>
+
+        <label for="Type" class="labeltest">Тип Факультатива:</label>
+        <input type="text" id="Type" name="Type" class="form-control" required
+    </div>
+    <br />
+
+    <button type="submit" class="btn btn-primary testbutton">Создать</button>
+</form>

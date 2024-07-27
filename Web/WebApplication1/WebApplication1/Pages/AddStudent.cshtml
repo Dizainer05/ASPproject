@@ -1,0 +1,57 @@
+﻿@page
+@model WebApplication1.Pages.AddStudentModel
+@{
+    ViewData["Title"] = "Таблица c студентами";
+}
+<head>
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+
+<h1>Студенты</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Имя </th>
+            <th>Фамилия </th>
+            <th>Отчество </th>
+            <th>Группа </th>
+            <th>Телефон </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Students empl in Model.students)
+        {
+            <tr>
+                <td>@empl.FirstName</td>
+                <td>@empl.LastName</td>
+                <td>@empl.MiddleName</td>
+                <td>@empl.Group</td>
+                <td>@empl.PhoneNumber</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<form method="post">
+    <div class="form-group">
+
+        <label for="FirstName" class="labeltest">Имя:</label>
+        <input type="text" id="FirstName" name="FirstName" class="form-control" required>
+
+        <label for="LastName" class="labeltest">Фамилия:</label>
+        <input type="text" id="LastName" name="LastName" class="form-control" required>
+
+        <label for="MiddleName" class="labeltest">Отчество:</label>
+        <input type="text" id="MiddleName" name="MiddleName" class="form-control" required
+
+        <label for="Group" class="labeltest">Группа:</label>
+        <input type="text" id="Group" name="Group" class="form-control" required
+
+        <label for="PhoneNumber" class="labeltest">Телефон:</label>
+        <input type="text" id="PhoneNumber" name="PhoneNumber" class="form-control" required
+    </div>
+    <br />
+
+    <button type="submit" class="btn btn-primary testbutton">Добавить</button>
+</form>

@@ -1,0 +1,80 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<head>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<div class = "text-center">
+    <p class="test">
+        Выполняет работу Носко Адриан Александрович Т-192
+    </p>
+    <form method="post">
+        <button type="submit" name="action" value="addStudent" class="btn btn-primary">Добавить студента</button>
+        <button type="submit" name="action" value="addFacultativ" class="btn btn-primary">Добавить факультатив</button>
+    </form>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Фамилия</th>
+                    <th>Имя</th>
+                    <th>Отчество</th>
+                    <th>Название факультатива</th>
+                    <th>Вид занятия</th>
+                    <th>Отработано часов</th>
+                    <th>Кол. Часов</th>
+                    <th>Дата записи</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+              @foreach(var note in Model.pr)
+                {
+                    <tr>
+                        <td>@note.Student</td>
+                        <td>@note.Name</td>
+                        <td>@note.Otectvo</td>
+                        <td>@note.Facultativ</td>
+                        <td>@note.Type</td>
+                        <td>@note.WorkHours</td>
+                        <td>@note.FacHours</td>
+                        <td>@note.Data</td>
+                        
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <form method="post">
+            <div class="form-group">
+                <label for="Студент" class="labletest">Студенты:</label>
+                <div>
+                    <select name="selectedStudent" class="form-control">
+                        @foreach(var stud in Model.students)
+                        {
+                            <option value="@stud.StudentId">@stud.LastName @stud.FirstName @stud.MiddleName</option>
+                          
+                        }
+                    </select>
+                </div>
+
+                <label for="Факультатив" class="labletest">Факультативы:</label>
+                <div>
+                    <select name="selectedFacultativ" class="form-control">
+                        @foreach (var fac in Model.facultatives)
+                        {
+                          <option value="@fac.FacultativeId">@fac.Title</option>
+                        }
+                    </select>
+                </div>
+
+                <label for="WorkHours" class="labeltest">Количество отработаных часов:</label>
+                <input type="text" id="WorkHours" name="WorkHours" class="form-control" required />
+            </div>
+            <br />
+            <button type="submit" name="action" value="addNote" class="btn btn-primary">Создать запись</button>
+        </form>
+</div>
